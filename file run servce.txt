@@ -1,0 +1,9 @@
+[Unit]
+Description=React js Home Page website
+After=network.target
+[Service]
+User=dara
+WorkingDirectory=/home/dara/reactjs17-templates
+ExecStart=/usr/bin/serve -s build
+[Install]
+WantedBy=multi-user.target

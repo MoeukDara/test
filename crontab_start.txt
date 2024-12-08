@@ -1,0 +1,33 @@
+
++ Bash file "Auto_startSvc.sh"
+#!/bin/bash
+
+if [ -f /home/dara/reactjs.service ]; then
+	echo " Starting reactjs.service... $(date)" >> /tmp/reactlogs.txt
+  # Start the ReactJS service
+  sudo systemctl start reactjs.service
+  sudo systemctl status reactjs.service
+else
+  echo "Fail to start reactjs.service $(date)" >> /tmp/reactlogsError.txt
+fi
+
+
++ Service file "reactjs.service"
+
+
+[Unit]
+Description=React js Home Page website
+After=network.target
+[Service]
+User=dara
+WorkingDirectory=/home/dara/reactjs17-templates
+ExecStart=/usr/bin/serve -s build
+[Install]
+WantedBy=multi-user.target
+
+
++ Crontab
+
+
+
+00 8 * * 1-5 /home/dara/Auto_startSvc.sh

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -f /home/dara/reactjs.service ]; then
+	echo " Starting reactjs.service... $(date)" >> /tmp/reactlogs.txt
+  # Start the ReactJS service
+  sudo systemctl start reactjs.service
+
+  # Optional: Check the status of the service
+  sudo systemctl status reactjs.service
+else
+  echo "Fail to start reactjs.service $(date)" >> /tmp/reactlogsError.txt
+fi
